@@ -9,3 +9,8 @@ RUN apt-get install -y php5-mcrypt
 RUN apt-get install -y php5-xsl
 RUN apt-get install -y php5-memcached
 RUN apt-get install -y php5-gd
+
+
+COPY run.sh /root/run.sh
+RUN chmod 755 /root/run.sh
+CMD ["/root/run.sh"]
