@@ -1,4 +1,6 @@
 apache:
   image: eboraas/apache-php
+  volumes:
+    - "./www/:/var/www/html/"
   ports:
     - "80:80"
