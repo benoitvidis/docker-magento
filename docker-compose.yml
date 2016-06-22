@@ -1,3 +1,13 @@
+mysql:
+  image: mysql
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=admin
+    - MYSQL_DATABASE=magento
+    - MYSQL_USER=magento
+    - MYSQL_PASSWORD=magento
+
 apache:
   image: apache-php
   volumes:
@@ -8,3 +18,5 @@ apache:
   environment:
     - DEV_UID=1000
     - DEV_GID=1000
+  links:
+    - mysql
