@@ -1,0 +1,4 @@
+apache:
+  image: eboraas/apache-php
+  ports:
+    - "80:80"
