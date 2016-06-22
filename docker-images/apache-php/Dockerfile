@@ -9,6 +9,7 @@ RUN apt-get install -y php5-mcrypt
 RUN apt-get install -y php5-xsl
 RUN apt-get install -y php5-memcached
 RUN apt-get install -y php5-gd
+RUN apt-get install -y php5-redis
 
 
 COPY run.sh /root/run.sh

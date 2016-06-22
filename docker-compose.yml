@@ -8,6 +8,9 @@ mysql:
     - MYSQL_USER=magento
     - MYSQL_PASSWORD=magento
 
+redis:
+  image: redis
+
 apache:
   image: apache-php
   volumes:
@@ -20,3 +23,5 @@ apache:
     - DEV_GID=1000
   links:
     - mysql
+    - redis
+
