@@ -2,5 +2,6 @@ apache:
   image: apache-php
   volumes:
     - "./www/:/var/www/html/"
+    - "./volumes/apache-php/etc/php5/apache2/php.ini:/etc/php5/apache2/php.ini"
   ports:
     - "80:80"
