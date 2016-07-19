@@ -23,19 +23,10 @@ services:
     volumes:
       - "./www/:/var/www/html/"
     ports:
-      - "81:80"
+      - "80:80"
     environment:
       - DEV_UID=${DEV_UID}
       - DEV_GID=${DEV_GID}
-    networks:
-      - net
-
-  varnish:
-    image: million12/varnish
-    ports:
-      - "80:80"
-    volumes:
-      - "./volumes/varnish/etc/varnish/default.vcl:/etc/varnish/default.vcl"
     networks:
       - net
 
