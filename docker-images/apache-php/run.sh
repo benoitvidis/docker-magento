@@ -1,9 +1,7 @@
 #!/bin/bash
 
-ORIGPASSWD=$(cat /etc/passwd | grep www-data)
-ORIG_UID=$(echo $ORIGPASSWD | cut -f3 -d:)
-ORIG_GID=$(echo $ORIGPASSWD | cut -f4 -d:)
-ORIG_HOME=$(echo "$ORIGPASSWD" | cut -f6 -d:)
+ORIG_UID=$(id -u www-data)
+ORIG_GID=$(id -g www-data)
 DEV_UID=${DEV_UID:=$ORIG_UID}
 DEV_GID=${DEV_GID:=$ORIG_GID}
 

@@ -1,35 +1,45 @@
-mysql:
-  image: mysql
-  ports:
-    - "3306:3306"
-  environment:
-    - MYSQL_ROOT_PASSWORD=admin
-    - MYSQL_DATABASE=magento
-    - MYSQL_USER=magento
-    - MYSQL_PASSWORD=magento
+version: '2'
 
-redis:
-  image: redis
+services:
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=magento
+      - MYSQL_USER=magento
+      - MYSQL_PASSWORD=magento
+    networks:
+      - net
 
-apache:
-  image: apache-php
-  volumes:
-    - "./www/:/var/www/html/"
-    - "./volumes/apache-php/etc/php5/apache2/php.ini:/etc/php5/apache2/php.ini"
-  ports:
-    - "81:80"
-  environment:
-    - DEV_UID=1000
-    - DEV_GID=1000
-  links:
-    - mysql
-    - redis
+  redis:
+    image: redis:3.2-alpine
+    networks:
+      - net
 
-varnish:
-  image: million12/varnish
-  ports:
-    - "80:80"
-  volumes:
-    - "./volumes/varnish/etc/varnish/default.vcl:/etc/varnish/default.vcl"
-  links:
-    - apache
+  apache:
+    build: ./docker-images/apache-php
+    volumes:
+      - "./www/:/var/www/html/"
+    ports:
+      - "81:80"
+    environment:
+      - DEV_UID=${DEV_UID}
+      - DEV_GID=${DEV_GID}
+    networks:
+      - net
+
+  varnish:
+    image: million12/varnish
+    ports:
+      - "80:80"
+    volumes:
+      - "./volumes/varnish/etc/varnish/default.vcl:/etc/varnish/default.vcl"
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge
+
