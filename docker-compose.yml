@@ -1,6 +1,9 @@
-apache:
-  image: eboraas/apache-php
-  volumes:
-    - "./www/:/var/www/html/"
-  ports:
-    - "80:80"
+version: '2'
+
+services:
+  apache:
+    image: php:7-apache
+    volumes:
+      - "./www:/var/www/html/"
+    ports:
+      - "80:80"
