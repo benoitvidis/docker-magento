@@ -1,4 +1,7 @@
-apache:
-  image: eboraas/apache-php
-  ports:
-    - "80:80"
+version: '2'
+
+services:
+  apache:
+    image: php:7-apache
+    ports:
+      - "80:80"
