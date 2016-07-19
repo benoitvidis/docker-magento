@@ -21,7 +21,7 @@ services:
   apache:
     build: ./docker-images/apache-php
     volumes:
-      - "./www/:/var/www/html/"
+      - "./www:/var/www/html/"
     ports:
       - "80:80"
     environment:
@@ -33,4 +33,3 @@ services:
 networks:
   net:
     driver: bridge
-

@@ -11,3 +11,4 @@ if [ "$DEV_UID" -ne "$ORIG_UID" ] || [ "$DEV_GID" -ne "$ORIG_GID" ]; then
 fi
 
 /usr/sbin/apache2ctl -D FOREGROUND
+
