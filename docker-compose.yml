@@ -1,10 +1,12 @@
-apache:
-  image: apache-php
-  volumes:
-    - "./www/:/var/www/html/"
-    - "./volumes/apache-php/etc/php5/apache2/php.ini:/etc/php5/apache2/php.ini"
-  ports:
-    - "80:80"
-  environment:
-    - DEV_UID=1000
-    - DEV_GID=1000
+version: '2'
+
+services:
+  apache:
+    build: ./docker-images/apache-php
+    volumes:
+      - "./www:/var/www/html/"
+    ports:
+      - "80:80"
+    environment:
+      - DEV_UID=${DEV_UID}
+      - DEV_GID=${DEV_GID}
