@@ -1,6 +1,9 @@
-apache:
-  image: apache-php
-  volumes:
-    - "./www/:/var/www/html/"
-  ports:
-    - "80:80"
+version: '2'
+
+services:
+  apache:
+    build: ./docker-images/apache-php
+    volumes:
+      - "./www:/var/www/html/"
+    ports:
+      - "80:80"
